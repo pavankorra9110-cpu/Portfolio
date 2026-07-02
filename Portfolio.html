@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korra Shanmukh Sai Pavan | Portfolio</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --bg2: #111827;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --accent: #38bdf8;
+        --accent2: #818cf8;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--bg), var(--bg2));
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(1100px, 90%); margin: auto; }
+
+      header {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+      }
+
+      .nav-links a:hover { color: var(--accent); }
+
+      .menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; }
+
+      .hero {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: center;
+        padding: 40px 0 80px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        margin-bottom: 15px;
+      }
+
+      .hero p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        margin-bottom: 20px;
+      }
+
+      .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn {
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #02111f; }
+      .btn-secondary { border: 1px solid var(--accent); color: var(--text); }
+      .btn:hover { transform: translateY(-2px); }
+
+      .profile-card {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      }
+
+      .avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        margin: 0 auto 16px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        display: grid;
+        place-items: center;
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      section { padding: 70px 0; }
+      h2 { margin-bottom: 18px; font-size: 1.8rem; color: var(--accent); }
+      .section-text { color: var(--muted); max-width: 700px; }
+
+      .grid { display: grid; gap: 20px; margin-top: 24px; }
+      .skills-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+      .project-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+      .card {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 20px;
+      }
+
+      .card h3 { margin-bottom: 8px; }
+      .card p { color: var(--muted); }
+
+      form {
+        display: grid;
+        gap: 12px;
+        max-width: 600px;
+        margin-top: 20px;
+      }
+      input, textarea, button[type="submit"] {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.08);
+        color: var(--text);
+      }
+      textarea { min-height: 120px; resize: vertical; }
+      button[type="submit"] { cursor: pointer; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #02111f; font-weight: 700; }
+      #messageBox { margin-top: 10px; color: #86efac; }
+
+      footer {
+        padding: 20px 0 40px;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      @media (max-width: 760px) {
+        .hero { grid-template-columns: 1fr; }
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          right: 5%;
+          background: rgba(15, 23, 42, 0.95);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 12px;
+          padding: 12px;
+        }
+        .nav-links.active { display: flex; }
+        .menu-btn { display: inline-block; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Korra Shanmukh Sai Pavan</div>
+          <button class="menu-btn" id="menuBtn">☰</button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="hero">
+          <div>
+            <h1>Hi, I'm Korra Shanmukh Sai Pavan</h1>
+            <p>I am a passionate web developer who loves creating clean, modern, and responsive websites with great user experience.</p>
+            <div class="buttons">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="avatar">K</div>
+            <h3>Frontend Developer</h3>
+            <p>Building beautiful web experiences with HTML, CSS, and JavaScript.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="about">
+        <div class="container">
+          <h2>About Me</h2>
+          <p class="section-text">
+            I enjoy turning ideas into interactive digital experiences. My focus is on simple design, responsive layouts, and smooth functionality that helps users enjoy every interaction.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="grid skills-grid">
+            <div class="card"><h3>HTML</h3><p>Semantic and modern structure</p></div>
+            <div class="card"><h3>CSS</h3><p>Responsive and attractive styling</p></div>
+            <div class="card"><h3>JavaScript</h3><p>Interactive UI and logic</p></div>
+            <div class="card"><h3>Design</h3><p>Clean and user-friendly interfaces</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <h2>Projects</h2>
+          <div class="grid project-grid">
+            <div class="card">
+              <h3>Personal Portfolio</h3>
+              <p>A modern one-page portfolio website with smooth navigation and responsive design.</p>
+            </div>
+            <div class="card">
+              <h3>Landing Page</h3>
+              <p>A stylish landing page with clear sections and interactive calls to action.</p>
+            </div>
+            <div class="card">
+              <h3>Web App UI</h3>
+              <p>Creative dashboard-style interface designed for usability and visual appeal.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <h2>Contact Me</h2>
+          <p class="section-text">Feel free to reach out for collaborations, projects, or just a friendly hello.</p>
+          <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="email" id="email" placeholder="Your Email" required />
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+          <div id="messageBox"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Korra Shanmukh Sai Pavan. All rights reserved.</div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById('menuBtn');
+      const navLinks = document.getElementById('navLinks');
+      const form = document.getElementById('contactForm');
+      const messageBox = document.getElementById('messageBox');
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        messageBox.textContent = `Thanks ${name || 'there'}! Your message has been sent.`;
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
